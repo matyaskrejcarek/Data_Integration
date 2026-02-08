@@ -140,3 +140,26 @@ for (var i = 0; i < data.bomboloExecutive.length; i++) {
   console.log("Processed - Bombolo Executive:", emp);
   idCounter++;
 }
+
+// ===== Firma norway legion =====
+for (var j = 0; j < data.norwayLegion.length; j++) {
+  var b = data.norwayLegion[j];
+  var salary = parseCzkSalary(b.plat);
+
+  if (!isValidEmployee(b.jmeno, salary)) {
+    console.error("Invalid employee", b);
+    continue;
+  }
+
+  var empB = {
+    id: idCounter,
+    fullName: b.jmeno,
+    totalSalary: salary,
+    company: "Norway Legion",
+    isActive: isActiveFromContract(b.detaily.uvazek)
+  };
+
+  allEmployees.push(empB);
+  console.log("Processed - Norway Legion:", empB);
+  idCounter++;
+}
