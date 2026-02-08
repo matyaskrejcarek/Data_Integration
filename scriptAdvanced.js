@@ -115,11 +115,27 @@ const employeesA = data.bomboloExecutive
     return {
       fullName,
       totalSalary,
-      company: "Firma A",
+      company: "Bombolo Executive",
       isActive: isActiveFromStatus(e.status)
         };
     })
     // The filter() method creates a new array that contains
     // only values that evaluate to true.
     // Boolean removes all null (invalid) entries produced by map().
+    .filter(Boolean);
+
+// ===== Firma Norway Legion =====
+const employeesB = data.norwayLegion
+    .map(e => {
+    const salary = parseCzkSalary(e.plat);
+
+    if (!isValidEmployee(e.jmeno, salary)) return null;
+
+    return {
+        fullName: e.jmeno,
+        totalSalary: salary,
+        company: "Norway Legion",
+        isActive: isActiveFromContract(e.detaily.uvazek)
+    };
+    })
     .filter(Boolean);
