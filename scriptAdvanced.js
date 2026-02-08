@@ -156,3 +156,18 @@ const employeesC = data.apolloDiscounted
     };
     })
     .filter(Boolean);
+
+// ===== Merge + ID =====
+
+// The spread operator (...) is used to merge multiple arrays
+// (employeesA, employeesB, employeesC) into one single array.
+const allEmployees = [...employeesA, ...employeesB, ...employeesC]
+  .map((emp, index) => ({
+    id: index + 1,
+    // The spread operator copies all existing properties
+    // from the employee object into the new object
+    ...emp
+  }));
+// The forEach() method executes the provided function
+// once for each element in the array.
+allEmployees.forEach(e => console.log("Processed:", e));
