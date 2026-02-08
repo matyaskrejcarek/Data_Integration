@@ -187,3 +187,7 @@ for (var k = 0; k < data.apolloDiscounted.length; k++) {
   console.log("Processed - Apollo Discounted:", empC);
   idCounter++;
 }
+
+// ===== Test =====
+console.log("--- TEST RUN ---");
+console.log("Total employees:", allEmployees.length);
