@@ -171,3 +171,7 @@ const allEmployees = [...employeesA, ...employeesB, ...employeesC]
 // The forEach() method executes the provided function
 // once for each element in the array.
 allEmployees.forEach(e => console.log("Processed:", e));
+
+// ===== Test =====
+console.log("--- TEST RUN ---");
+console.log("Total employees:", allEmployees.length);
