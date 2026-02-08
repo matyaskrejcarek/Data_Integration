@@ -139,3 +139,20 @@ const employeesB = data.norwayLegion
     };
     })
     .filter(Boolean);
+
+// ===== Apollo Discounted =====
+const employeesC = data.apolloDiscounted
+    .map(({ profile, finance }) => {
+    const fullName = profile.personal_data.full_name;
+    const salary = convertToCZK(finance.amount, finance.currency);
+
+    if (!isValidEmployee(fullName, salary)) return null;
+
+    return {
+        fullName,
+        totalSalary: salary,
+        company: "Apollo Discounted",
+        isActive: isActiveFromSalary(finance.amount)
+    };
+    })
+    .filter(Boolean);
