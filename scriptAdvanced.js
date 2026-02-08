@@ -101,3 +101,25 @@ const isValidEmployee = (name, salary) =>
 const isActiveFromStatus = status => status === "ACTIVE";
 const isActiveFromContract = contract => contract === "HPP";
 const isActiveFromSalary = amount => amount > 0;
+
+// ===== Firma Bombolo Executive =====
+const employeesA = data.bomboloExecutive
+    // The map() method iterates over each element in the bombolo array
+    // and transforms it into a new object with a unified employee structure.
+    .map(e => {
+    const fullName = `${e.name.first} ${e.name.last}`;
+    const totalSalary = e.salary.fix + e.salary.bonus;
+
+    if (!isValidEmployee(fullName, totalSalary)) return null;
+
+    return {
+      fullName,
+      totalSalary,
+      company: "Firma A",
+      isActive: isActiveFromStatus(e.status)
+        };
+    })
+    // The filter() method creates a new array that contains
+    // only values that evaluate to true.
+    // Boolean removes all null (invalid) entries produced by map().
+    .filter(Boolean);
