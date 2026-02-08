@@ -117,3 +117,26 @@ function isActiveFromSalary(amount) {
   return amount > 0;
 }
 
+// ===== Firma bombolo =====
+for (var i = 0; i < data.bomboloExecutive.length; i++) {
+  var e = data.bomboloExecutive[i];
+  var fullName = e.name.first + " " + e.name.last;
+  var totalSalary = e.salary.fix + e.salary.bonus;
+
+  if (!isValidEmployee(fullName, totalSalary)) {
+    console.error("Invalid employee", e);
+    continue;
+  }
+
+  var emp = {
+    id: idCounter,
+    fullName: fullName,
+    totalSalary: totalSalary,
+    company: "Bombolo Executive",
+    isActive: isActiveFromStatus(e.status)
+  };
+
+  allEmployees.push(emp);
+  console.log("Processed - Bombolo Executive:", emp);
+  idCounter++;
+}
