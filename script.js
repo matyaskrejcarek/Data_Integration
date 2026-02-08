@@ -163,3 +163,27 @@ for (var j = 0; j < data.norwayLegion.length; j++) {
   console.log("Processed - Norway Legion:", empB);
   idCounter++;
 }
+
+// ===== Firma Apollo Discounted =====
+for (var k = 0; k < data.apolloDiscounted.length; k++) {
+  var c = data.apolloDiscounted[k];
+  var fullNameC = c.profile.personal_data.full_name;
+  var salaryC = convertToCZK(c.finance.amount, c.finance.currency);
+
+  if (!isValidEmployee(fullNameC, salaryC)) {
+    console.error("Invalid employee", c);
+    continue;
+  }
+
+  var empC = {
+    id: idCounter,
+    fullName: fullNameC,
+    totalSalary: salaryC,
+    company: "Apollo Discounted",
+    isActive: isActiveFromSalary(c.finance.amount)
+  };
+
+  allEmployees.push(empC);
+  console.log("Processed - Apollo Discounted:", empC);
+  idCounter++;
+}
