@@ -94,3 +94,10 @@ const convertToCZK = (amount, currency) =>
 // Parses salary string like "42 000 Kč" to Number
 const parseCzkSalary = salary => Number(salary.replace(/\D/g, ""));
 
+// Validates employee data
+const isValidEmployee = (name, salary) =>
+  Boolean(name && salary > 0);
+
+const isActiveFromStatus = status => status === "ACTIVE";
+const isActiveFromContract = contract => contract === "HPP";
+const isActiveFromSalary = amount => amount > 0;
